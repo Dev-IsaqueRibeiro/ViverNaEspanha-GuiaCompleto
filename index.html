@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viver na Espanha - Guia Completo</title>
+    <link rel="stylesheet" href="./Styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Viver na Espanha</h1>
+      <p>O Guia Completo Para Você Morar, Estudar e Trabalhar na Espanha</p>
+      <img src="./Image/Capa-Ebook.png" alt="E-book" class="capa" />
+      <a href="https://pay.kiwify.com.br/E8ti54J" class="btn"
+        >Quero meu Guia Agora</a
+      >
+    </header>
+
+    <section class="show">
+      <h2>O Problema</h2>
+      <p>
+        Muitos brasileiros sonham em estudar e viver na Espanha, mas se perdem
+        na burocracia: visto, documentação, moradia, custos, adaptação… Este
+        guia resolve tudo em um só lugar.
+      </p>
+    </section>
+
+    <section>
+      <h2>O que você vai aprender</h2>
+      <div class="benefits">
+        <div class="card">✅ Como solicitar o visto de estudante</div>
+        <div class="card">✅ Custos de vida reais por cidade</div>
+        <div class="card">✅ Melhores universidades e cursos</div>
+        <div class="card">✅ Oportunidades de trabalho para estudantes</div>
+        <div class="card">✅ Benefícios e ajudas governamentais</div>
+        <div class="card">✅ Como levar sua família junto</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Oferta Especial</h2>
+      <div class="offer">
+        <h2>De R$ 97 por apenas R$ 27 hoje!</h2>
+        <p>Oferta válida por tempo limitado</p>
+        <div id="countdown" class="countdown"></div>
+        <a href="https://pay.kiwify.com.br/E8ti54J" class="btn2"
+          >Garantir Meu Guia</a
+        >
+      </div>
+    </section>
+
+    <section>
+      <h2>Garantia de 7 dias</h2>
+      <p>
+        Se em até 7 dias você sentir que o guia não te ajudou, devolvemos 100%
+        do seu dinheiro, sem burocracia.
+      </p>
+      <div class="stamps">
+        <img class="selo" src="./Image/ssl.png" alt="sll" />
+        <img class="selo7" src="./Image/selo_7.png" alt="selo_7" />
+        <img
+          class="seloGoogle"
+          src="./Image/seguro_google.png"
+          alt="seguro_google"
+        />
+      </div>
+    </section>
+
+    <section>
+      <h2>Depoimentos</h2>
+      <div class="benefits">
+        <div class="card">
+          “Eu e minha família seguimos o passo a passo e hoje moramos em
+          Valência. Recomendo demais!” – Maria, 34 anos
+        </div>
+        <div class="card">
+          “Graças a esse guia consegui organizar tudo para meu visto sem
+          estresse!” – João, 26 anos
+        </div>
+        <div class="card">
+          “Mesmo depois dos 50 anos, consegui me mudar com toda minha família.
+          Esse guia foi um divisor de águas para mim!” – Carlos, 56 anos
+        </div>
+        <div class="card">
+          “Economizei meses de pesquisa! Tudo já está bem explicadinho.” –
+          Rafaela, 29 anos
+        </div>
+      </div>
+    </section>
+
+    <section class="CTA_Final">
+      <h2>Viva na Espanha!</h2>
+      <p>
+        Faça como centenas de brasileiros que decidiram dar um basta na vida
+        <b>instável</b> e <b>insegura</b> no Brasil e tomaram a decisão de
+        <b>Mudar de Vida!</b>
+      </p>
+      <br />
+      <img src="./Image/Capa-Ebook.png" alt="E-book" class="capa" />
+      <a href="https://pay.kiwify.com.br/E8ti54J" class="btn"
+        >Quero meu Guia Agora</a
+      >
+    </section>
+
+    <section>
+      <h2>Perguntas Frequentes</h2>
+      <div class="benefits">
+        <div class="card">
+          <strong>Esse guia serve para quem vai sozinho ou com família?</strong
+          ><br />
+          O Guia contém instruções para ambos os casos.
+        </div>
+        <div class="card">
+          <strong>O guia é digital?</strong><br />
+          Sim, trata-se de um e-book e você o recebe imediatamente após a
+          compra.
+        </div>
+        <div class="card">
+          <strong>Preciso já ter a universidade escolhida?</strong><br />
+          Não, o guia te ajuda a escolher a melhor opção para você.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        © 2025 Viver na Espanha - IRD Publicações | Todos os direitos reservados
+      </p>
+    </footer>
+
+    <script>
+      const sections = document.querySelectorAll("section");
+      const options = { threshold: 0.2 };
+
+      const observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      }, options);
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Contador regressivo (24h)
+      const countdownEl = document.getElementById("countdown");
+      let time = 24 * 60 * 60;
+
+      function updateCountdown() {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        countdownEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
+        time--;
+        if (time < 0) {
+          time = 24 * 60 * 60;
+        } // Reinicia
+      }
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
