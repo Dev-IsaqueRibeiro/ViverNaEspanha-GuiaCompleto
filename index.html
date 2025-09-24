@@ -15,9 +15,9 @@
       <h1>Viver na Espanha</h1>
       <p>O Guia Completo Para Você Morar, Estudar e Trabalhar na Espanha</p>
       <img src="./Image/Capa-Ebook.png" alt="E-book" class="capa" />
-      <a href="https://pay.kiwify.com.br/E8ti54J" class="btn"
-        >Quero meu Guia Agora</a
-      >
+      <a href="https://pay.kiwify.com.br/E8ti54J" class="btn">
+        Quero meu Guia Agora
+      </a>
     </header>
 
     <section class="show">
@@ -44,12 +44,12 @@
     <section>
       <h2>Oferta Especial</h2>
       <div class="offer">
-        <h2>De R$ 97 por apenas R$ 27 hoje!</h2>
+        <h2>De R$ 97 por apenas R$ 37 hoje!</h2>
         <p>Oferta válida por tempo limitado</p>
         <div id="countdown" class="countdown"></div>
-        <a href="https://pay.kiwify.com.br/E8ti54J" class="btn2"
-          >Garantir Meu Guia</a
-        >
+        <a href="https://pay.kiwify.com.br/E8ti54J" class="btn2">
+          Garantir Meu Guia
+        </a>
       </div>
     </section>
 
@@ -101,9 +101,9 @@
       </p>
       <br />
       <img src="./Image/Capa-Ebook.png" alt="E-book" class="capa" />
-      <a href="https://pay.kiwify.com.br/E8ti54J" class="btn"
-        >Quero meu Guia Agora</a
-      >
+      <a href="https://pay.kiwify.com.br/E8ti54J" class="btn">
+        Quero meu Guia Agora
+      </a>
     </section>
 
     <section>
@@ -126,6 +126,14 @@
       </div>
     </section>
 
+    <!-- Botão flutuante WhatsApp com balão -->
+    <div id="whatsapp-chat">
+      <a href="https://w.app/ls9680" target="_blank">
+        <span class="chat-text">Fale Conosco!</span>
+        <img src="./Image/WhatsApp-Icon.png" alt="WhatsApp" />
+      </a>
+    </div>
+
     <footer>
       <p>
         © 2025 Viver na Espanha - IRD Publicações | Todos os direitos reservados
@@ -133,10 +141,11 @@
     </footer>
 
     <script>
+      // Animação das sections
       const sections = document.querySelectorAll("section");
       const options = { threshold: 0.2 };
 
-      const observer = new IntersectionObserver(function (entries, observer) {
+      const observer = new IntersectionObserver(function (entries) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("show");
@@ -148,21 +157,39 @@
         observer.observe(section);
       });
 
-      // Contador regressivo (24h)
-      const countdownEl = document.getElementById("countdown");
-      let time = 24 * 60 * 60;
+      // Countdown até o fim do dia
+      function iniciarCountdown() {
+        function atualizarCountdown() {
+          const agora = new Date(); // horário atual
+          const fimDoDia = new Date();
+          fimDoDia.setHours(23, 59, 59, 999); // define o fim do dia (23:59:59)
 
-      function updateCountdown() {
-        const hours = Math.floor(time / 3600);
-        const minutes = Math.floor((time % 3600) / 60);
-        const seconds = time % 60;
-        countdownEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
-        time--;
-        if (time < 0) {
-          time = 24 * 60 * 60;
-        } // Reinicia
+          const diff = fimDoDia - agora; // diferença em milissegundos
+
+          if (diff <= 0) {
+            // Se já passou da meia-noite, reinicia
+            document.getElementById("countdown").innerHTML =
+              "Promoção reiniciada!";
+            setTimeout(iniciarCountdown, 1000); // chama de novo em 1s
+            return;
+          }
+
+          // Converte diferença para horas, minutos e segundos
+          const horas = Math.floor(diff / (1000 * 60 * 60));
+          const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+          // Mostra no HTML
+          document.getElementById("countdown").innerHTML =
+            horas + "h " + minutos + "m " + segundos + "s ";
+        }
+
+        // Atualiza a cada segundo
+        setInterval(atualizarCountdown, 1000);
       }
-      setInterval(updateCountdown, 1000);
+
+      // Inicia o countdown quando a página carrega
+      window.onload = iniciarCountdown;
     </script>
   </body>
 </html>

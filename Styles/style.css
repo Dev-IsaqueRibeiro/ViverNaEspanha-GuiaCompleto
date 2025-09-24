@@ -107,17 +107,17 @@ section h2 {
 
 img.selo {
   max-width: 150px;
-  animation: pulsar 0.65s infinite alternate;
+  animation: pulsar 2s infinite alternate;
 }
 
 img.selo7 {
   max-width: 120px;
-  animation: pulsar 0.8s infinite alternate;
+  animation: pulsar 2.25s infinite alternate;
 }
 
 img.seloGoogle {
   max-width: 300px;
-  animation: pulsar 0.75s infinite alternate;
+  animation: pulsar 2.5s infinite alternate;
 }
 
 section.show {
@@ -192,6 +192,76 @@ section.CTA_Final p {
   color: #d62828;
 }
 
+#whatsapp-chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  animation: float 3s ease-in-out infinite; /* 👈 animação aplicada */
+}
+
+#whatsapp-chat img {
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s;
+}
+
+#whatsapp-chat img:hover {
+  transform: scale(1.1);
+}
+
+.chat-text {
+  background: #a61d1d;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  animation: fadeWZ 0.5s ease-in-out;
+}
+
+@keyframes fadeWZ {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animação de sobe e desce mais sutil */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px); /* menos intenso que -8px */
+  }
+}
+
+/* Aplicar animação no chat-text também */
+#whatsapp-chat .chat-text {
+  animation: floatText 3s ease-in-out infinite;
+}
+
+/* O texto terá um delay, para dar efeito natural */
+@keyframes floatText {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
 footer {
   background: #003049;
   color: #fff;
@@ -262,5 +332,9 @@ footer {
   section.CTA_Final {
     margin-left: 20px;
     margin-right: 20px;
+  }
+  #whatsapp-chat img {
+    width: 40px;
+    height: 40px;
   }
 }
